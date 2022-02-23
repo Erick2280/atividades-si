@@ -43,111 +43,121 @@
             <h1 class="title">Atividade 1 • <span class="blue-color">Busca Heurística</span></h1>
 
             <div class="route-selector">
-                <sl-select class="station-selection-dropdown" id="departure-station-selection-dropdown" placeholder="Selecione uma estação..." size="large">
-                    <p class="station-selection-label font-bold" slot="label">Saída</p>
-                    <sl-menu-item value="E1">E1
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E2">E2
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E3">E3
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E4">E4
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E5">E5
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E6">E6
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E7">E7
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E8">E8
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E9">E9
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E10">E10
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E11">E11
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E12">E12
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E13">E13
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E14">E14
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                </sl-select>
+                <div class="route-artwork">
+                    <svg width="24" height="144" viewBox="0 0 24 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#71717A"/>
+                        <circle cx="12" cy="132" r="10" stroke="#71717A" stroke-width="4"/>
+                        <path d="M12 12V120" stroke="#71717A" stroke-width="4"/>
+                    </svg>                                                                   
+                </div>
 
-                <sl-select class="station-selection-dropdown" id="destination-station-selection-dropdown" placeholder="Selecione uma estação..." size="large">
-                    <p class="station-selection-label font-bold" slot="label">Destino</p>
-                    <sl-menu-item value="E1">E1
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E2">E2
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E3">E3
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E4">E4
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E5">E5
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E6">E6
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E7">E7
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E8">E8
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E9">E9
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E10">E10
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E11">E11
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E12">E12
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E13">E13
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="E14">E14
-                        <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
-                    </sl-menu-item>
-                </sl-select>
+                <div class="route-controls">
+                    <sl-select class="station-selection-dropdown" id="departure-station-selection-dropdown" placeholder="Selecione uma estação..." size="large">
+                        <p class="station-selection-label font-bold" slot="label">Saída</p>
+                        <sl-menu-item value="E1">E1
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E2">E2
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E3">E3
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E4">E4
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E5">E5
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E6">E6
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E7">E7
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E8">E8
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E9">E9
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E10">E10
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E11">E11
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E12">E12
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E13">E13
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E14">E14
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                    </sl-select>
+
+                    <sl-select class="station-selection-dropdown" id="destination-station-selection-dropdown" placeholder="Selecione uma estação..." size="large">
+                        <p class="station-selection-label font-bold" slot="label">Destino</p>
+                        <sl-menu-item value="E1">E1
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E2">E2
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E3">E3
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E4">E4
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E5">E5
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E6">E6
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha azul" class="icon-indicator-blue-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E7">E7
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E8">E8
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E9">E9
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E10">E10
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha amarela" class="icon-indicator-yellow-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E11">E11
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E12">E12
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E13">E13
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha vermelha" class="icon-indicator-red-line"></sl-icon>
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                        <sl-menu-item value="E14">E14
+                            <sl-icon slot="suffix" name="circle-fill" label="Linha verde" class="icon-indicator-green-line"></sl-icon>
+                        </sl-menu-item>
+                    </sl-select>
+                </div>
 
             </div>
             

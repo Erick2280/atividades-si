@@ -129,6 +129,16 @@ p.font-bold, h1.font-bold, h2.font-bold, h3.font-bold {
     padding-right: 1.5em;
     padding-top: 1em;
     padding-bottom: 2em;
+    display: flex;
+}
+
+.route-artwork {
+    padding-top: 4.25em;
+    width: 3em;
+}
+
+.route-controls {
+    width: calc(100% - 3em);
 }
 
 .station-selection-dropdown {
