@@ -1,0 +1,272 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--sl-color-gray-700);
+    margin: 0px;
+    font-size: 16px;
+    overflow-y: hidden;
+}
+
+h1,  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
+
+.gray-color {
+    color: var(--sl-color-gray-700);
+}
+
+.blue-color {
+    color: var(--sl-color-primary-600);
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none;
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+#app {
+    flex-direction: row;
+}
+
+#controls-container {
+    background-color: #f8f9f9;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    height: calc(100vh - 2em);
+    width: 45vw;
+    max-width: 512px;
+    overflow-y: auto;
+}
+
+#map-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (max-width: 800px) {
+    body {
+        overflow-y: initial;
+    }
+
+    #app {
+        flex-direction: column;
+    }
+
+    #controls-container {
+        width: 100%;
+        max-width: initial;
+        height: initial;
+        padding-top: 92px;
+        overflow-y: initial;
+    }
+
+    #map-container {
+        height: initial;
+    }
+}
+
+.title {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.5em;
+}
+
+p.font-bold, h1.font-bold, h2.font-bold, h3.font-bold {
+    font-weight: 700;
+}
+
+#controls-container footer {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.footer-course {
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.footer-author {
+    padding-bottom: 0.75em;
+}
+
+.route-selector {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+.station-selection-dropdown {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.station-selection-label {
+    text-transform: uppercase;
+}
+
+.icon-indicator-blue-line {
+    color: var(--sl-color-sky-500);
+}
+
+.icon-indicator-yellow-line {
+    color: var(--sl-color-amber-500);
+}
+
+.icon-indicator-red-line {
+    color: var(--sl-color-red-500);
+}
+
+.icon-indicator-green-line {
+    color: var(--sl-color-green-500);
+}
+
+.metro-map {
+    padding: 2em;
+}
+
+svg .metro-line {
+    stroke-width: 0.4em;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+svg .metro-line-blue {
+    stroke: var(--sl-color-sky-500);
+}
+
+svg .metro-line-yellow {
+    stroke: var(--sl-color-amber-500);
+}
+
+svg .metro-line-red {
+    stroke: var(--sl-color-red-500);
+}
+
+svg .metro-line-green {
+    stroke: var(--sl-color-green-500);
+}
+
+svg .metro-station-dot {
+    fill: var(--sl-color-neutral-200);
+    stroke: var(--sl-color-neutral-500);
+    stroke-width: 0.2em;
+}
+
+svg .metro-station-text {
+    fill: var(--sl-color-neutral-500);
+}
+
+@media (min-width: 800px) {
+    svg .metro-line {
+        stroke-width: 0.15em;
+    }
+
+    svg .metro-station-dot {
+        stroke-width: 0.2em;
+        transform-box: fill-box;
+        transform-origin: center center;
+        transform: scale(0.5);
+    }
+    
+    svg .metro-station-text {
+        transform-box: fill-box;
+        transform-origin: center center;
+        transform: scale(0.625);
+    }
+    
+    #metro-station-text-e1 {
+        transform: scale(0.625) translate(0px, 8px);
+    }
+
+    #metro-station-text-e2 {
+        transform: scale(0.625) translate(0px, 8px);
+    }
+
+    #metro-station-text-e3 {
+        transform: scale(0.625) translate(-8px, 12px);
+    }
+
+    #metro-station-text-e4 {
+        transform: scale(0.625) translate(-8px, 4px);
+    }
+
+    #metro-station-text-e5 {
+        transform: scale(0.625) translate(-4px, 8px);
+    }
+    
+    #metro-station-text-e6 {
+        transform: scale(0.625) translate(-12px, 0px);
+    }
+    
+    #metro-station-text-e7 {
+        transform: scale(0.625) translate(8px, 0px);
+    }
+    
+    #metro-station-text-e8 {
+        transform: scale(0.625) translate(-8px, 4px);
+    }
+    
+    #metro-station-text-e9 {
+        transform: scale(0.625) translate(8px, 8px);
+    }
+    
+    #metro-station-text-e10 {
+        transform: scale(0.625) translate(8px, 8px);
+    }
+    
+    #metro-station-text-e11 {
+        transform: scale(0.625) translate(0px, 8px);
+    }
+    
+    #metro-station-text-e12 {
+        transform: scale(0.625) translate(0px, 8px);
+    }
+    
+    #metro-station-text-e13 {
+        transform: scale(0.625) translate(-12px, 0px);
+    }
+    
+    #metro-station-text-e14 {
+        transform: scale(0.625) translate(-12px, 0px);
+    }
+}
+
+.hidden-element {
+    display: none;
+}
