@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { MinHeap } from './min-heap.js';
-import { TRAIN_SPEED_IN_KILOMETERS_PER_HOUR, STATIONS, } from './data.js';
+import { TRAIN_SPEED_IN_KILOMETERS_PER_HOUR, LINE_EXCHANGE_TIME_IN_MINUTES, STATIONS, } from './data.js';
 (() => {
     const departureStationSelectionDropdown = document.getElementById('departure-station-selection-dropdown');
     const destinationStationSelectionDropdown = document.getElementById('destination-station-selection-dropdown');
@@ -48,11 +48,13 @@ function runAStarAlgorithm(departureStation, destinationStation) {
     const estimatedTotalTimeGetter = (nodeData) => {
         return nodeData.realTimeFromDepartureToNodeInMinutes + nodeData.estimatedTimeFromNodeToDestinationInMinutes;
     };
+    const needToExchangeLine = (currentNode, adjacentStation) => (currentNode.currentLine === null || STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0] === currentNode.currentLine);
     const openList = new MinHeap(estimatedTotalTimeGetter);
     openList.insert({
         station: departureStation,
         realTimeFromDepartureToNodeInMinutes: 0,
-        estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(departureStation, destinationStation)
+        estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(departureStation, destinationStation),
+        currentLine: null
     });
     const closedList = new Map();
     while (openList.size > 0) {
@@ -68,14 +70,20 @@ function runAStarAlgorithm(departureStation, destinationStation) {
                 if (!closedList.has(adjacentStation) || realTimeFromDepartureToNodeInMinutes < closedList.get(adjacentStation).realTimeFromDepartureToNodeInMinutes) {
                     closedList.set(adjacentStation, {
                         station: currentNode.station,
-                        realTimeFromDepartureToNodeInMinutes,
+                        realTimeFromDepartureToNodeInMinutes: needToExchangeLine(currentNode, adjacentStation)
+                            ? realTimeFromDepartureToNodeInMinutes
+                            : realTimeFromDepartureToNodeInMinutes + LINE_EXCHANGE_TIME_IN_MINUTES,
                         estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation),
+                        currentLine: STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0],
                     });
                     if (!openList.find(node => (node === null || node === void 0 ? void 0 : node.station) === adjacentStation)) {
                         openList.insert({
                             station: adjacentStation,
-                            realTimeFromDepartureToNodeInMinutes,
+                            realTimeFromDepartureToNodeInMinutes: needToExchangeLine(currentNode, adjacentStation)
+                                ? realTimeFromDepartureToNodeInMinutes
+                                : realTimeFromDepartureToNodeInMinutes + LINE_EXCHANGE_TIME_IN_MINUTES,
                             estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation),
+                            currentLine: STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0],
                         });
                     }
                 }

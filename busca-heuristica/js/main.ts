@@ -52,6 +52,7 @@ type NodeData = {
     station: StationIdentifier,
     realTimeFromDepartureToNodeInMinutes: number,
     estimatedTimeFromNodeToDestinationInMinutes: number,
+    currentLine: MetroLine,
 }
 
 function runAStarAlgorithm(departureStation: StationIdentifier, destinationStation: StationIdentifier) {
@@ -59,11 +60,15 @@ function runAStarAlgorithm(departureStation: StationIdentifier, destinationStati
         return nodeData.realTimeFromDepartureToNodeInMinutes + nodeData.estimatedTimeFromNodeToDestinationInMinutes;
     };
 
+    const needToExchangeLine = (currentNode: NodeData, adjacentStation: StationIdentifier) => 
+        (currentNode.currentLine === null || STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0] === currentNode.currentLine);
+
     const openList: MinHeap<NodeData> = new MinHeap<NodeData>(estimatedTotalTimeGetter);
     openList.insert({
         station: departureStation,
         realTimeFromDepartureToNodeInMinutes: 0,
-        estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(departureStation, destinationStation)
+        estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(departureStation, destinationStation),
+        currentLine: null
     })
     const closedList = new Map<StationIdentifier, NodeData>();
     
@@ -79,19 +84,27 @@ function runAStarAlgorithm(departureStation: StationIdentifier, destinationStati
             if (realDistance != null) {
                 const realTimeFromDepartureToNodeInMinutes =
                     currentNode.realTimeFromDepartureToNodeInMinutes +
-                    getRealTripTimeInMinutes(currentNode.station, adjacentStation)
+                    getRealTripTimeInMinutes(currentNode.station, adjacentStation);
 
                 if (!closedList.has(adjacentStation) || realTimeFromDepartureToNodeInMinutes < closedList.get(adjacentStation).realTimeFromDepartureToNodeInMinutes) {
                     closedList.set(adjacentStation, {
                         station: currentNode.station,
-                        realTimeFromDepartureToNodeInMinutes,
+                        realTimeFromDepartureToNodeInMinutes:
+                            needToExchangeLine(currentNode, adjacentStation)
+                            ? realTimeFromDepartureToNodeInMinutes
+                            : realTimeFromDepartureToNodeInMinutes + LINE_EXCHANGE_TIME_IN_MINUTES,
                         estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation),
+                        currentLine: STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0],
                     });
                     if (!openList.find(node => node?.station === adjacentStation)) {
                         openList.insert({
                             station: adjacentStation,
-                            realTimeFromDepartureToNodeInMinutes,
+                            realTimeFromDepartureToNodeInMinutes:
+                                needToExchangeLine(currentNode, adjacentStation)
+                                ? realTimeFromDepartureToNodeInMinutes
+                                : realTimeFromDepartureToNodeInMinutes + LINE_EXCHANGE_TIME_IN_MINUTES,
                             estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation),
+                            currentLine: STATIONS[adjacentStation].lines.filter(line => STATIONS[currentNode.station].lines.includes(line))[0],
                         })
                     }
                 }
