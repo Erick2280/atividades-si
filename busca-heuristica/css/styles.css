@@ -109,6 +109,11 @@ p.font-bold, h1.font-bold, h2.font-bold, h3.font-bold {
     font-weight: 700;
 }
 
+.block-button {
+    padding-top: 1.5em;
+    width: 100%;
+}
+
 #controls-container footer {
     padding-left: 1.5em;
     padding-right: 1.5em;
@@ -174,6 +179,9 @@ svg .metro-line {
     stroke-width: 0.4em;
     stroke-linecap: round;
     stroke-linejoin: round;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease;
 }
 
 svg .metro-line-blue {
@@ -198,8 +206,21 @@ svg .metro-station-dot {
     stroke-width: 0.2em;
 }
 
+svg .metro-station-dot.metro-station-dot-fade {
+    fill: var(--sl-color-neutral-100);
+    stroke: var(--sl-color-neutral-300);
+}
+
 svg .metro-station-text {
     fill: var(--sl-color-neutral-500);
+}
+
+svg .opacity-fade {
+    opacity: 0.2;
+}
+
+svg .opacity-show {
+    opacity: 1;
 }
 
 @media (min-width: 800px) {
@@ -245,7 +266,7 @@ svg .metro-station-text {
     }
     
     #metro-station-text-e7 {
-        transform: scale(0.625) translate(8px, 0px);
+        transform: scale(0.625) translate(12px, 0px);
     }
     
     #metro-station-text-e8 {
