@@ -55,7 +55,38 @@ function runAStarAlgorithm(departureStation: StationIdentifier, destinationStati
         estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(departureStation, destinationStation)
     })
     const closedList = new Map<StationIdentifier, NodeData>();
-    
+
+    let isFinalDestination = false;
+
+    while (openList.size > 0 && !isFinalDestination) {
+        const currentNode = openList.removeSmallest();
+
+        if (currentNode.station === destinationStation) {
+            isFinalDestination = true;
+        } else {
+            const adjacentStations = STATIONS[currentNode.station].realDistances;
+            for (const [adjacentStation, realDistance] of Object.entries(adjacentStations) as [StationIdentifier, number][]) {
+                if (realDistance != null) {
+                    const realTimeFromDepartureToNodeInMinutes =
+                        currentNode.realTimeFromDepartureToNodeInMinutes +
+                        getRealTripTimeInMinutes(currentNode.station, adjacentStation, null) // FIXME
+                    if (!closedList.has(adjacentStation) || realTimeFromDepartureToNodeInMinutes < closedList.get(adjacentStation).realTimeFromDepartureToNodeInMinutes) {
+                        closedList.set(currentNode.station, {
+                            station: adjacentStation,
+                            realTimeFromDepartureToNodeInMinutes,
+                            estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation)
+                        })
+                        openList.insert({
+                            station: adjacentStation,
+                            realTimeFromDepartureToNodeInMinutes,
+                            estimatedTimeFromNodeToDestinationInMinutes: getEstimatedTripTimeInMinutes(adjacentStation, destinationStation)
+                        })
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 function calculateTrainTimeInMinutes(distance: number): number {
