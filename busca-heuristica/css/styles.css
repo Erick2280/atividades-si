@@ -171,6 +171,14 @@ p.font-bold, h1.font-bold, h2.font-bold, h3.font-bold {
     color: var(--sl-color-green-500);
 }
 
+#route-time-indicator {
+    text-transform: uppercase;
+    padding-left: 4.5em;
+    width: 100%;
+    padding-right: 1.5em;
+    padding-bottom: 1.5em;
+}
+
 .metro-map {
     padding: 2em;
 }
